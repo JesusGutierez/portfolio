@@ -1,67 +1,112 @@
-import React from 'react';
+'use client';
 
-export const MainHeader = () => {
+import { useState } from 'react';
+import { Disclosure } from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+
+const navigation = [
+  { name: 'Who I am', href: '#' },
+  { name: 'Skills', href: '#' },
+  { name: 'Projects', href: '#' },
+  { name: 'Contact', href: '#' },
+];
+
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(' ');
+}
+
+const MainHeader = () => {
+  const [currentTabIndex, setCurrentTabIndex] = useState<number>(0);
+
   return (
-    <header className="bg-white">
-      <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
-        aria-label="Global"
-      >
-        {/* Logo */}
-        <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <img
-              className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt=""
-            />
-          </a>
-        </div>
+    <Disclosure as="nav">
+      {({ open }) => (
+        <>
+          <div className="max-w-none px-5 py-4">
+            <div className="relative flex h-16 items-center justify-between">
+              <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
+                {/* Mobile menu button*/}
+                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                  <span className="sr-only">Open main menu</span>
+                  {open ? (
+                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                  ) : (
+                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                  )}
+                </Disclosure.Button>
+              </div>
 
-        {/* Options */}
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-          >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-          </button>
-        </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Who I am
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Skills
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Projects
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Contact
-          </a>
-        </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
-      </nav>
-    </header>
+              <div className="flex flex-shrink-0 items-center">
+                <p className="font-bold text-third">
+                  Jesús Antonio
+                  <br />
+                  Gutierrez Yancán
+                </p>
+              </div>
+              <div className="hidden sm:ml-6 sm:block">
+                <div className="flex space-x-4">
+                  {navigation.map((item, index) => {
+                    const isCurrent: boolean = index == currentTabIndex;
+
+                    return (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setCurrentTabIndex(index);
+                        }}
+                        className={classNames(
+                          isCurrent
+                            ? 'bg-gray-900 text-third'
+                            : 'hover:bg-secondary hover:text-third',
+                          'rounded-md px-3 py-2 text-sm font-bold'
+                        )}
+                        aria-current={isCurrent ? 'page' : undefined}
+                      >
+                        {item.name}
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <Disclosure.Panel className="sm:hidden">
+            <div className="space-y-1 px-2 pb-3 pt-2">
+              {navigation.map((item, index: number) => {
+                const isCurrent: boolean = index == currentTabIndex;
+
+                return (
+                  <Disclosure.Button
+                    key={item.name}
+                    as="a"
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setCurrentTabIndex(index);
+                    }}
+                    className={classNames(
+                      isCurrent
+                        ? 'bg-gray-900 text-third'
+                        : 'hover:bg-gray-700 hover:text-third',
+                      'block rounded-md px-3 py-2 text-base font-medium'
+                    )}
+                    aria-current={isCurrent ? 'page' : undefined}
+                  >
+                    {item.name}
+                  </Disclosure.Button>
+                );
+              })}
+            </div>
+          </Disclosure.Panel>
+        </>
+      )}
+    </Disclosure>
   );
 };
+
+export default MainHeader;

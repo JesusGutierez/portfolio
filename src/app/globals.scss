@@ -1,6 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --primary-color: 7, 25, 82;
+    --secondary-color: 53, 162, 159;
+    --third-color: 151, 254, 237;
+  }
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -10,10 +20,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: var(--secondary-color);
+    --background-start-rgb: var(--primary-color);
+    --background-end-rgb: var(--primary-color);
   }
+}
+
+* {
+  font-family: "Courier Prime";
+  font-weight: 600;
 }
 
 body {
