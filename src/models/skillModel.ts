@@ -6,7 +6,4 @@ class SkillModel {
     this.area = area;
     this.technologies = technologies;
   }
-
-  // public area
-  // public technologies
 }

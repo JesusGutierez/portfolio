@@ -4,7 +4,18 @@ import '../../models/skillModel';
 const skills: Array<SkillModel> = [
   {
     area: 'Front end',
-    technologies: ['React Js', 'Material UI', 'Flutter'],
+    technologies: [
+      'React Js',
+      'Next Js',
+      'Sass',
+      'Redux',
+      'Material UI',
+      'Flutter',
+      'Ionic',
+      'Angular Js',
+      'React Js',
+      'Next Js',
+    ],
   },
   {
     area: 'Back end',
@@ -22,16 +33,25 @@ const skills: Array<SkillModel> = [
 
 const Skills = () => {
   return (
-    <div className="h-screen px-5 py-4 text-center">
-      <p className="text-4xl p-8">Skills</p>
-      <div className={`grid grid-cols-${skills.length} bg-red-900`}>
+    <div className="h-screen text-center px-10 pb-10 bg-blue-900 flex flex-col">
+      <p className="text-4xl p-5">Skills</p>
+      <div className={`grid grid-cols-4 gap-x-10 bg-green-900 h-full`}>
         {skills.map((skill, index) => {
-          return <div key={index}>{skill.area}</div>;
-        })}
-        {skills.map((item, index) => {
           return (
-            <div key={index} className="bg-white-900">
-              <p>skill</p>
+            <div
+              key={index}
+              className="flex items-center justify-center h-20 bg-third"
+            >
+              <p className="">{skill.area}</p>
+            </div>
+          );
+        })}
+        {skills.map((item, index2) => {
+          return (
+            <div key={index2} className="bg-third">
+              {item.technologies.map((tech, index2) => {
+                return <p key={index2}>{tech}</p>;
+              })}
             </div>
           );
         })}
