@@ -16,6 +16,8 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  --heigh-header: 60px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,7 +30,7 @@
 
 * {
   font-family: "Courier Prime";
-  font-weight: 600;
+  font-weight: 700;
 }
 
 body {
@@ -43,4 +45,14 @@ body {
       font-family: sans-serif;
     }
   }
+}
+
+.heightHeader {
+  height: var(--heigh-header);
+}
+
+.heightWithHeader {
+  // height: calc(100vh - var(--heigh-header));
+  height: 100vh;
+  padding-top: var(--heigh-header);
 }

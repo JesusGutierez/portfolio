@@ -1,14 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const navigation = [
-  { name: 'Who I am', href: '#' },
-  { name: 'Skills', href: '#' },
-  { name: 'Projects', href: '#' },
-  { name: 'Contact', href: '#' },
+  { name: 'Who I am', href: '/#about' },
+  { name: 'Skills', href: '/#skills' },
+  { name: 'Projects', href: '/#projects' },
+  { name: 'Contact', href: '/#contact' },
 ];
 
 function classNames(...classes: string[]) {
@@ -19,11 +19,11 @@ const MainHeader = () => {
   const [currentTabIndex, setCurrentTabIndex] = useState<number>(0);
 
   return (
-    <Disclosure as="nav">
+    <Disclosure as="nav" className="sticky">
       {({ open }) => (
         <>
-          <div className="max-w-none px-5 py-4">
-            <div className="relative flex h-16 items-center justify-between">
+          <div className="max-w-none w-screen">
+            <div className="relative heightHeader px-7 flex items-center justify-between">
               <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -56,6 +56,7 @@ const MainHeader = () => {
                           e.preventDefault();
                           e.stopPropagation();
                           setCurrentTabIndex(index);
+                          window.location.replace(item.href);
                         }}
                         className={classNames(
                           isCurrent
@@ -88,6 +89,7 @@ const MainHeader = () => {
                       e.preventDefault();
                       e.stopPropagation();
                       setCurrentTabIndex(index);
+                      window.location.replace(item.href);
                     }}
                     className={classNames(
                       isCurrent

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../models/skillModel';
+import Title from '@/components/Title';
 
 const skills: Array<SkillModel> = [
   {
@@ -33,9 +34,44 @@ const skills: Array<SkillModel> = [
 
 const Skills = () => {
   return (
-    <div className="h-screen text-center px-10 pb-10 bg-blue-900 flex flex-col">
-      <p className="text-4xl p-5">Skills</p>
-      <div className={`grid grid-cols-4 gap-x-10 bg-green-900 h-full`}>
+    <div
+      className="heightWithHeader px-10 pb-10 flex flex-col text-xl font-black"
+      id="skills"
+    >
+      <Title title="Skills"></Title>
+      <table className="table-auto border-separate border-spacing-x-[25px] h-full">
+        <thead className="mb-[20px]">
+          <tr>
+            {skills.map((skill, index) => {
+              return (
+                <th key={index} className="h-20">
+                  <p className="">{skill.area}</p>
+                </th>
+              );
+            })}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {skills.map((item, index2) => {
+              return (
+                <td key={index2} className="bg-third ">
+                  {item.technologies.map((tech, index2) => {
+                    return (
+                      <p key={index2} className="mx-3 text-center">
+                        {tech}
+                      </p>
+                    );
+                  })}
+                </td>
+              );
+            })}
+          </tr>
+        </tbody>
+      </table>
+      {/* <div
+        className={`grid grid-cols-4 gap-x-10 bg-green-900 h-full inline-grid`}
+      >
         {skills.map((skill, index) => {
           return (
             <div
@@ -55,7 +91,7 @@ const Skills = () => {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 };
