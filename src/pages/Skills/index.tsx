@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Component, ReactElement } from 'react';
 import '../../models/skillModel';
 import Title from '@/components/Title';
+import styles from './index.module.scss';
 
-const skills: Array<SkillModel> = [
+let skills: Array<SkillModel> = [
   {
     area: 'Front end',
     technologies: [
@@ -32,14 +33,40 @@ const skills: Array<SkillModel> = [
   },
 ];
 
+const getRowsOfTechnologies = (): Array<ReactElement> => {
+  const maxNroRows: number = getMaxNroRows();
+  let rows: Array<ReactElement> = Array.from(
+    { length: maxNroRows },
+    (value, indexRow) => (
+      <tr key={indexRow}>
+        {skills.map((item: SkillModel, indexCell: number) => (
+          <td key={indexCell} className="text-center bg-third">
+            {item.technologies[indexRow]}
+          </td>
+        ))}
+      </tr>
+    )
+  );
+  return rows;
+};
+
+const getMaxNroRows = (): number => {
+  let maxNroRows: number = 0;
+  skills.forEach((item: SkillModel) => {
+    if (item.technologies.length > maxNroRows)
+      maxNroRows = item.technologies.length;
+  });
+  return maxNroRows;
+};
+
 const Skills = () => {
   return (
     <div
-      className="heightWithHeader px-10 pb-10 flex flex-col text-xl font-black"
+      className={`heightWithHeader px-10 pb-10 flex flex-col text-xl font-black ${styles.skillsTable}`}
       id="skills"
     >
       <Title title="Skills"></Title>
-      <table className="table-auto border-separate border-spacing-x-[25px] h-full">
+      <table className="table-fixed border-separate border-spacing-x-[25px] h-full ">
         <thead className="mb-[20px]">
           <tr>
             {skills.map((skill, index) => {
@@ -52,7 +79,8 @@ const Skills = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          {getRowsOfTechnologies()}
+          {/* <tr>
             {skills.map((item, index2) => {
               return (
                 <td key={index2} className="bg-third ">
@@ -66,7 +94,7 @@ const Skills = () => {
                 </td>
               );
             })}
-          </tr>
+          </tr> */}
         </tbody>
       </table>
       {/* <div
