@@ -1,17 +1,15 @@
 .skillsTable {
   th,
   td {
-    // width: 10px;
-    // column-width: 50px;
+    // background-color: purple;
   }
   .techList {
-    // background-color: purple;
     vertical-align: top;
     text-align: center;
-
+    width: 180px;
     p {
-      // background-color: green;
-      margin: 5px 5px;
+      margin: 15px 5px;
+      line-height: 1em;
     }
   }
 }

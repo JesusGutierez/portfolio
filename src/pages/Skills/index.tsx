@@ -62,7 +62,7 @@ const getMaxNroRows = (): number => {
 const Skills = () => {
   return (
     <div
-      className={`heightWithHeader px-10 pb-10 flex flex-col text-xl font-black`}
+      className={`heightWithHeader px-10 pb-10 flex flex-col items-center text-xl`}
       id="skills"
     >
       <Title title="Skills"></Title>
