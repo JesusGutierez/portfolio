@@ -52,7 +52,6 @@ body {
 }
 
 .heightWithHeader {
-  // height: calc(100vh - var(--heigh-header));
-  height: 100vh;
+  min-height: 100vh;
   padding-top: var(--heigh-header);
 }

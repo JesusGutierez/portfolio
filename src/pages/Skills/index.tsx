@@ -62,11 +62,14 @@ const getMaxNroRows = (): number => {
 const Skills = () => {
   return (
     <div
-      className={`heightWithHeader px-10 pb-10 flex flex-col text-xl font-black ${styles.skillsTable}`}
+      className={`heightWithHeader px-10 pb-10 flex flex-col text-xl font-black`}
       id="skills"
     >
       <Title title="Skills"></Title>
-      <table className="table-fixed border-separate border-spacing-x-[25px] h-full ">
+
+      <table
+        className={`table-auto border-separate border-spacing-x-[15px] flex-1 ${styles.skillsTable}`}
+      >
         <thead className="mb-[20px]">
           <tr>
             {skills.map((skill, index) => {
@@ -79,47 +82,22 @@ const Skills = () => {
           </tr>
         </thead>
         <tbody>
-          {getRowsOfTechnologies()}
-          {/* <tr>
-            {skills.map((item, index2) => {
+          <tr>
+            {skills.map((skill, index) => {
               return (
-                <td key={index2} className="bg-third ">
-                  {item.technologies.map((tech, index2) => {
-                    return (
-                      <p key={index2} className="mx-3 text-center">
-                        {tech}
-                      </p>
-                    );
-                  })}
+                <td key={index} className={styles.techList}>
+                  {skill.technologies.map((tech, index2) => (
+                    // <td key={index2}>
+                    <p key={index2}>{tech}</p>
+                    // </td>
+                  ))}
                 </td>
               );
             })}
-          </tr> */}
+          </tr>
         </tbody>
+        {/* <tbody>{getRowsOfTechnologies()}</tbody> */}
       </table>
-      {/* <div
-        className={`grid grid-cols-4 gap-x-10 bg-green-900 h-full inline-grid`}
-      >
-        {skills.map((skill, index) => {
-          return (
-            <div
-              key={index}
-              className="flex items-center justify-center h-20 bg-third"
-            >
-              <p className="">{skill.area}</p>
-            </div>
-          );
-        })}
-        {skills.map((item, index2) => {
-          return (
-            <div key={index2} className="bg-third">
-              {item.technologies.map((tech, index2) => {
-                return <p key={index2}>{tech}</p>;
-              })}
-            </div>
-          );
-        })}
-      </div> */}
     </div>
   );
 };
