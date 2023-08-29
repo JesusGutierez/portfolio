@@ -10,7 +10,6 @@
     --primary-color: $secondaryColor;
     --secondary-color: $primaryColor;
     --third-color: $thirdColor;
-    // --third-color: rgb(151, 254, 237);
   }
 }
 
@@ -18,8 +17,6 @@
   --foreground-rgb: rgb(0, 0, 0);
   --background-start-rgb: rgb(214, 219, 220);
   --background-end-rgb: rgb(255, 255, 255);
-
-  // --heigh-header: 60px;
 }
 
 @media (prefers-color-scheme: dark) {
