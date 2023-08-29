@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-// import './src/app/globals.scss';
 
 module.exports = {
   content: [
@@ -15,9 +14,9 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
-        primary: 'rgb(var(--primary-color))',
-        secondary: 'rgb(var(--secondary-color))',
-        third: 'rgb(var(--third-color))',
+        primary: 'var(--primary-color)',
+        secondary: 'var(--secondary-color)',
+        third: 'var(--third-color)',
       },
     },
   },
