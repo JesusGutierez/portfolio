@@ -23,7 +23,7 @@ const MainHeader = () => {
       {({ open }) => (
         <>
           <div className="max-w-none w-screen">
-            <div className="relative heightHeader px-7 flex items-center justify-between">
+            <div className="relative heightHeader px-7 flex items-center justify-between bg-primary">
               <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -75,7 +75,7 @@ const MainHeader = () => {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
+          <Disclosure.Panel className="sm:hidden bg-primary">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item, index: number) => {
                 const isCurrent: boolean = index == currentTabIndex;
