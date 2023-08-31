@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primaryColor: rgb(7, 25, 82);
+  --secondaryColor: rgb(53, 162, 159);
+  --thirdColor: rgb(151, 254, 237);
+  --heighHeader: 60px;
+}
+
+* {
+  font-family: "Courier Prime";
+  font-weight: 700;
+}
+
+body {
+  color: var(--secondaryColor);
+  background: linear-gradient(to bottom, transparent, var(--primaryColor)) var(--primaryColor);
+  .scssClass {
+    background-color: rgb(55, 18, 243);
+    text-align: center;
+    padding: 20px 0;
+    h2 {
+      color: white;
+      font-family: sans-serif;
+    }
+  }
+}
+
+.heightHeader {
+  height: var(--heighHeader);
+}
+
+.heightWithHeader {
+  min-height: 100vh;
+  padding-top: var(--heighHeader);
+}

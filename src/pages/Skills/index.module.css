@@ -1,12 +1,10 @@
-@import "src/styles/variables.scss";
-
 .skillsTable {
   .techList {
     vertical-align: top;
     text-align: center;
     width: 180px;
-    background-color: $thirdColor;
-    p {
+    background-color: var(--thirdColor);
+    & p{
       margin: 15px 5px;
       line-height: 1em;
     }
