@@ -1,7 +1,7 @@
 import React, { Component, ReactElement } from 'react';
 import '../../models/skillModel';
 import Title from '@/components/Title';
-import styles from './index.module.css';
+import styles from './index.module.scss';
 
 let skills: Array<SkillModel> = [
   {
