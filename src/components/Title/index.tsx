@@ -6,7 +6,7 @@ interface TitleProps {
 }
 
 const Title = (props: TitleProps) => {
-  return <p className="text-4xl p-5 text-center">{props.title}</p>;
+  return <p className="text-4xl p-5 text-center text-third">{props.title}</p>;
 };
 
 Title.propTypes = {

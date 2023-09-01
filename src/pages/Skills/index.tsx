@@ -87,16 +87,13 @@ const Skills = () => {
               return (
                 <td key={index} className={styles.techList}>
                   {skill.technologies.map((tech, index2) => (
-                    // <td key={index2}>
                     <p key={index2}>{tech}</p>
-                    // </td>
                   ))}
                 </td>
               );
             })}
           </tr>
         </tbody>
-        {/* <tbody>{getRowsOfTechnologies()}</tbody> */}
       </table>
     </div>
   );

@@ -1,0 +1,27 @@
+$cardBorderRadius: 8px;
+
+#projectsTable {
+  display: grid;
+  margin: 20px 50px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+  > div:nth-child(1n) {
+  }
+  > .projectContainer {
+    gap: 15px;
+    > .imageContainer {
+      background-color: var(--thirdColor);
+      border-radius: $cardBorderRadius;
+      padding: 10px;
+      height: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      > img {
+        border-radius: $cardBorderRadius;
+      }
+    }
+    > .projectText {
+    }
+  }
+}
