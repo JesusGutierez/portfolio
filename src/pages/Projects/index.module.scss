@@ -2,8 +2,8 @@ $cardBorderRadius: 8px;
 
 #projectsTable {
   display: grid;
-  margin: 20px 80px;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  margin: 20px 50px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 25px;
   > .projectContainer {
     gap: 15px;

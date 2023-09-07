@@ -2,6 +2,7 @@
 
 import MainHeader from '@/components/MainHeader';
 import AboutMe from '@/pages/AboutMe';
+import Contact from '@/pages/Contact';
 import Projects from '@/pages/Projects';
 import Skills from '@/pages/Skills';
 
@@ -14,6 +15,7 @@ const Home = () => {
       <AboutMe />
       <Skills />
       <Projects />
+      <Contact />
     </body>
   );
 };
