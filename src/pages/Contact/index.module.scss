@@ -1,5 +1,26 @@
 #infoContainer {
-  background-color: green;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  margin: 0 20px;
+  > :nth-child(1n) {
+    padding: 20px 40px;
+  }
+  > :first-child {
+    border-right: 4px var(--thirdColor) solid;
+  }
+  > #networksContainer {
+    > .networkContainer {
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+      > :first-child {
+        width: 40px;
+        height: 40px;
+        margin: 0 10px 0 0;
+      }
+      > :last-child {
+        width: fit-content;
+      }
+    }
+  }
 }
