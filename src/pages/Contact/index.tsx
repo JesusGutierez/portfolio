@@ -1,16 +1,17 @@
 import Title from '@/components/Title';
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './index.module.scss';
 import { AiOutlineGithub, AiFillLinkedin, AiOutlineMail } from 'react-icons/ai';
 import { SocialNetwork } from '@/models/SocialNetwork';
 import { Field } from '@/models/FIeld';
+import { sendEmail } from '@/services/email';
+
 const fields: Field[] = [
   new Field('name', null),
   new Field('e-mail', null),
   new Field('subject', null),
   new Field('message', 6),
 ];
-
 const networks: SocialNetwork[] = [
   new SocialNetwork(
     <AiOutlineGithub />,
@@ -32,14 +33,28 @@ const networks: SocialNetwork[] = [
   ),
 ];
 
+const objFields = (formFields: Field[]) => {
+  const obj: Map<string, string> = new Map();
+  formFields.forEach((field, index) => obj.set(field.name, ''));
+  console.log('pbj', obj);
+  return obj;
+};
+
 function Contact() {
+  const [formData, setFormData] = useState(objFields(fields));
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    alert(formData);
+  };
+
   return (
     <div className="flex flex-col heightWithHeader" id="contact">
       <Title title="Contact me" />
       <div id={styles.infoContainer}>
         <div>
           <p className="mb-5 text-xl">Leave ne a messgage</p>
-          <form>
+          <form method="post" onSubmit={handleSubmit}>
             {fields.map((field, index) => {
               return (
                 <div
@@ -71,8 +86,15 @@ function Contact() {
             })}
             <div className="flex justify-end">
               <button
-                className="bg-third text-secondary hover:bg-blue-700 font-bold py-2 text-white px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-third text-secondary hover:bg-blue-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="button"
+                onClick={() => {
+                  sendEmail(
+                    ['gtrrzyancan@outlook.com'],
+                    'New message - Portfolio - Jesús',
+                    'I want to invite you for an interview'
+                  );
+                }}
               >
                 Send!
               </button>
