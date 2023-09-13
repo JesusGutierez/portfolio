@@ -2,35 +2,40 @@ import React, { Component, ReactElement } from 'react';
 import '../../models/skillModel';
 import Title from '@/components/Title';
 import styles from './index.module.scss';
+import SkillModel from '../../models/skillModel';
 
 let skills: Array<SkillModel> = [
-  {
-    area: 'Front end',
-    technologies: [
-      'React Js',
-      'Next Js',
-      'Sass',
-      'Redux',
-      'Material UI',
-      'Flutter',
-      'Ionic',
-      'Angular Js',
-      'React Js',
-      'Next Js',
-    ],
-  },
-  {
-    area: 'Back end',
-    technologies: ['React Js', 'Material UI', 'Flutter'],
-  },
-  {
-    area: 'DataBases',
-    technologies: ['React Js', 'Material UI', 'Flutter'],
-  },
-  {
-    area: 'IT and Systems',
-    technologies: ['React Js', 'Material UI', 'Flutter'],
-  },
+  new SkillModel('Front end', [
+    'React js',
+    'Sass',
+    'Redux',
+    'Material UI',
+    'Tailwind',
+    'Next js',
+    'Ionic',
+    'Angular',
+    'Flutter',
+  ]),
+  new SkillModel('Back end', [
+    'Node js',
+    'Express js',
+    'Api Rest',
+    'Firebase',
+    'GCP',
+  ]),
+  new SkillModel('Languages', ['Javascript', 'Typescript', 'Dart', 'SQL']),
+  new SkillModel('Databases', ['MySQL', 'SQL Server', 'Firestore']),
+  new SkillModel('IT and systems', [
+    'Visual Studio Code',
+    'EsLint',
+    'Play Console',
+    'npm',
+    'Yarn',
+    'Trello',
+    'Git',
+    'Github',
+    'Notion',
+  ]),
 ];
 
 const getRowsOfTechnologies = (): Array<ReactElement> => {

@@ -7,3 +7,5 @@ class SkillModel {
     this.technologies = technologies;
   }
 }
+
+export default SkillModel;
