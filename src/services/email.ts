@@ -4,7 +4,11 @@ const defaultClient = ElasticEmail.ApiClient.instance;
 const apiKey = defaultClient.authentications['apikey'];
 apiKey.apiKey = process.env.ELASTICEMAIL_API_KEY;
 
-const sendEmail = (recipients: string[], subject: string, content: string) => {
+const sendEmail = async (
+  recipients: string[],
+  subject: string,
+  content: string
+) => {
   const api = new ElasticEmail.EmailsApi();
 
   const email = ElasticEmail.EmailMessageData.constructFromObject({
@@ -30,7 +34,7 @@ const sendEmail = (recipients: string[], subject: string, content: string) => {
       console.log('API called successfully.');
     }
   };
-  api.emailsPost(email, callback);
+  await api.emailsPost(email, callback);
 };
 
 export { sendEmail };
