@@ -5,11 +5,18 @@ const apiKey = defaultClient.authentications['apikey'];
 apiKey.apiKey = process.env.ELASTICEMAIL_API_KEY;
 
 const sendEmail = async (
-  recipients: string[],
   subject: string,
-  content: string
+  content: string,
+  contactName = '',
+  contactEmail = ''
 ) => {
   const api = new ElasticEmail.EmailsApi();
+  let recipients: string[] = [];
+  if (process.env.EMAIL_RECIPIENT) recipients = [process.env.EMAIL_RECIPIENT];
+
+  if (recipients.length === 0) {
+    throw Error('There is no recipient');
+  }
 
   const email = ElasticEmail.EmailMessageData.constructFromObject({
     Recipients: recipients.map(
@@ -22,7 +29,7 @@ const sendEmail = async (
           Content: content,
         }),
       ],
-      Subject: subject,
+      Subject: `${subject} - ${contactName} - ${contactEmail}`,
       From: `Jesús Gutierrez - Portfolio <${process.env.EMAIL_FROM}>`,
     },
   });

@@ -11,30 +11,40 @@ let skills: Array<SkillModel> = [
     'Redux',
     'Material UI',
     'Tailwind',
-    'Next js',
+    'Next Js',
     'Ionic',
     'Angular',
+    'Rxjs',
+    'Jasmine',
+    'Karma',
     'Flutter',
   ]),
-  new SkillModel('Back end', [
-    'Node js',
-    'Express js',
-    'Api Rest',
-    'Firebase',
-    'GCP',
+  new SkillModel('Back end', ['Node js', 'Express js', 'Api Rest', 'Firebase']),
+  new SkillModel('Languages', [
+    'HTML',
+    'CSS',
+    'Javascript',
+    'Typescript',
+    'Dart',
+    'SQL',
+    'SCSS',
   ]),
-  new SkillModel('Languages', ['Javascript', 'Typescript', 'Dart', 'SQL']),
-  new SkillModel('Databases', ['MySQL', 'SQL Server', 'Firestore']),
-  new SkillModel('IT and systems', [
-    'Visual Studio Code',
+  new SkillModel('Databases', [
+    'MySQL',
+    'SQL Server',
+    'Firestore',
+    'Big Query',
+  ]),
+  new SkillModel('Others', [
     'EsLint',
-    'Play Console',
-    'npm',
+    'Npm',
     'Yarn',
-    'Trello',
     'Git',
     'Github',
-    'Notion',
+    'Postman',
+    'Visual Studio Code',
+    'Play Console',
+    'UML',
   ]),
 ];
 
@@ -90,7 +100,7 @@ const Skills = () => {
           <tr>
             {skills.map((skill, index) => {
               return (
-                <td key={index} className={styles.techList}>
+                <td key={index} className={`${styles.techList} text-primary`}>
                   {skill.technologies.map((tech, index2) => (
                     <p key={index2}>{tech}</p>
                   ))}

@@ -6,7 +6,7 @@ import { SocialNetwork } from '@/models/SocialNetwork';
 import { Field } from '@/models/FIeld';
 import { sendEmail } from '@/services/email';
 import { useFormik } from 'formik';
-import * as yup from 'yup';
+import * as Yup from 'yup';
 
 const fields: Field[] = [
   new Field('name', null),
@@ -41,15 +41,26 @@ const objFields = (formFields: Field[]): Map<string, string> => {
   return newObj;
 };
 
+const getValidations = (): Yup.ObjectShape => {
+  let validations: Yup.ObjectShape = {};
+  fields.forEach((field) => {
+    validations[field.name] = Yup.string().required(
+      `The ${field.name} is required`
+    );
+  });
+  return validations;
+};
+
 function Contact() {
   const formik = useFormik({
     initialValues: objFields(fields),
+    validationSchema: Yup.object().shape(getValidations()),
     onSubmit: (values: any) => {
-      alert(JSON.stringify(values));
       sendEmail(
-        ['gtrrzyancan@outlook.com'],
-        'Message from Portfolio',
-        values.message
+        'Portfolio - Contact message',
+        values.message,
+        values.name,
+        values.email
       );
     },
   });
@@ -57,47 +68,58 @@ function Contact() {
   return (
     <div className="flex flex-col heightWithHeader" id="contact">
       <Title title="Contact me" />
-      <div id={styles.infoContainer}>
-        <div>
-          <p className="mb-5 text-xl">Leave ne a messgage</p>
+      <div
+        id={styles.infoContainer}
+        className="flex-auto flex flex-col mx-10 mb-20 gap-10"
+      >
+        <div className="w-full max-w-screen-md">
+          <p className="mb-5 text-xl">Leave me a message</p>
           <form onSubmit={formik.handleSubmit}>
             {fields.map((field, index) => {
               return (
                 <div
                   key={index}
-                  className="flex mb-4 items-center justify-between"
+                  className="flex mb-4 items-center justify-between flex-wrap"
                 >
                   <label
-                    className="block text-sm font-bold w-[100px] whitespace-pre"
+                    className="block text-sm font-bold w-[100px] whitespace-pre mb-2"
                     htmlFor="username"
                   >
                     <p className="capitalize">{field.name}</p>
                   </label>
-
-                  <div className="bg-secondary p-1 rounded w-full">
+                  <div className="rounded w-full general-shadow">
                     {field.nroLines != null ? (
                       <textarea
-                        className="appearance-none rounded py-2 px-3 bg-third w-full text-secondary"
+                        className={`appearance-none rounded py-2 px-3 bg-third w-full text-primary ${styles.textarea}`}
                         id={field.name}
                         rows={field.nroLines}
                         {...formik.getFieldProps(field.name)}
                       ></textarea>
                     ) : (
                       <input
-                        className="appearance-none rounded py-2 px-3 bg-third w-full text-secondary"
+                        className="appearance-none rounded py-2 px-3 bg-third w-full text-primary"
                         id={field.name}
                         type="text"
                         {...formik.getFieldProps(field.name)}
                       />
                     )}
                   </div>
+
+                  {formik.touched[field.name] && formik.errors[field.name] && (
+                    <div className="error-field-message">
+                      {formik.errors[field.name] as string}
+                    </div>
+                  )}
                 </div>
               );
             })}
             <div className="flex justify-end">
               <button
-                className="bg-third text-secondary hover:bg-blue-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className={`${
+                  formik.isValid ? 'opacity-100' : 'opacity-50'
+                } bg-third  hover:bg-third hover:opacity-75 text-primary hover:bg-blue-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline`}
                 type="submit"
+                disabled={formik.isValidating}
               >
                 Send!
               </button>

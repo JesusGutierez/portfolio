@@ -4,13 +4,11 @@ $cardBorderRadius: 8px;
   display: grid;
   margin: 20px 50px;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 25px;
+  gap: 50px;
   > .projectContainer {
     gap: 15px;
     > .imageContainer {
-      background-color: var(--thirdColor);
       border-radius: $cardBorderRadius;
-      padding: 10px;
       height: fit-content;
       display: flex;
       justify-content: center;

@@ -1,18 +1,17 @@
 #infoContainer {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin: 0 20px;
-  > :nth-child(1n) {
-    padding: 20px 40px;
-  }
-  > :first-child {
-    border-right: 4px var(--thirdColor) solid;
-  }
+  align-items: center;
   > #networksContainer {
+    display: flex;
+    justify-content: center;
+    gap: 5px 30px;
+    flex-wrap: wrap;
+    width: 100%;
     > .networkContainer {
       display: flex;
       align-items: center;
-      margin: 20px 0;
+      justify-content: center;
+      margin: 10px 0;
+      flex-wrap: wrap;
       > :first-child {
         width: 40px;
         height: 40px;
@@ -22,5 +21,8 @@
         width: fit-content;
       }
     }
+  }
+  .textarea {
+    margin-bottom: -7px;
   }
 }

@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import styles from './index.module.scss';
 
 const navigation = [
   { name: 'Who I am', href: '/#about' },
@@ -23,7 +24,7 @@ const MainHeader = () => {
       {({ open }) => (
         <>
           <div className="max-w-none w-screen">
-            <div className="relative heightHeader px-7 flex items-center justify-between bg-primary">
+            <div className="relative  flex items-center justify-between bg-primary px-7 py-7">
               <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -36,11 +37,9 @@ const MainHeader = () => {
                 </Disclosure.Button>
               </div>
 
-              <div className="flex flex-shrink-0 items-center">
-                <p className="font-bold text-third">
-                  Jesús Antonio
-                  <br />
-                  Gutierrez Yancán
+              <div className="flex  items-center max-w-[40%]">
+                <p className={`font-bold text-third ${styles.name}`}>
+                  JESÚS ANTONIO GUTIERREZ YANCÁN
                 </p>
               </div>
               <div className="hidden sm:ml-6 sm:block">
@@ -60,9 +59,9 @@ const MainHeader = () => {
                         }}
                         className={classNames(
                           isCurrent
-                            ? 'bg-gray-900 text-third'
-                            : 'hover:bg-secondary hover:text-third',
-                          'rounded-md px-3 py-2 text-sm font-bold'
+                            ? 'bg-gray-900 text-primary'
+                            : 'hover:bg-secondary hover:text-primary',
+                          'rounded-md px-3 py-2 text-sm font-bold text-center flex items-center'
                         )}
                         aria-current={isCurrent ? 'page' : undefined}
                       >
@@ -93,8 +92,8 @@ const MainHeader = () => {
                     }}
                     className={classNames(
                       isCurrent
-                        ? 'bg-gray-900 text-third'
-                        : 'hover:bg-gray-700 hover:text-third',
+                        ? 'bg-gray-900 text-primary'
+                        : 'hover:bg-gray-700 hover:text-primary',
                       'block rounded-md px-3 py-2 text-base font-medium'
                     )}
                     aria-current={isCurrent ? 'page' : undefined}
