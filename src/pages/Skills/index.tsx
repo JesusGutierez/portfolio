@@ -75,12 +75,13 @@ const getMaxNroRows = (): number => {
 };
 
 const Skills = () => {
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(
+    typeof window !== 'undefined' ? window.innerWidth : Infinity
+  );
 
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
-      console.log('current width', width);
     };
 
     window.addEventListener('resize', handleResize);
