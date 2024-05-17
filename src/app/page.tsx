@@ -6,21 +6,31 @@ import Contact from '@/pages/Contact';
 import Projects from '@/pages/Projects';
 import Skills from '@/pages/Skills';
 import { getProjects } from '@/services/projects';
-import { useEffect } from 'react';
+import { LegacyRef, useEffect, useRef, useState } from 'react';
 
 const Home = () => {
   getProjects();
 
   return (
-    <body>
-      <div className="fixed">
+    <div className="h-screen flex flex-col overflow-auto">
+      <div className="sticky top-0">
         <MainHeader />
       </div>
-      <AboutMe />
-      <Skills />
-      <Projects />
-      <Contact />
-    </body>
+      <div className={`h-full overflow-x-hidden`}>
+        <div className="min-h-full flex justify-center w-full">
+          <AboutMe />
+        </div>
+        <div className="min-h-full flex justify-center w-full">
+          <Skills />
+        </div>
+        <div className="min-h-full flex justify-center w-full">
+          <Projects />
+        </div>
+        <div className="min-h-full flex justify-center w-full">
+          <Contact />
+        </div>
+      </div>
+    </div>
   );
 };
 

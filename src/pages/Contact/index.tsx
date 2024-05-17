@@ -66,7 +66,7 @@ function Contact() {
   });
 
   return (
-    <div className="flex flex-col heightWithHeader" id="contact">
+    <div className="flex flex-col w-full" id="contact">
       <Title title="Contact me" />
       <div
         id={styles.infoContainer}

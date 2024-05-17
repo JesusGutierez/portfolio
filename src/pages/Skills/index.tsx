@@ -1,4 +1,4 @@
-import React, { Component, ReactElement } from 'react';
+import React, { Component, ReactElement, useEffect, useState } from 'react';
 import '../../models/skillModel';
 import Title from '@/components/Title';
 import styles from './index.module.scss';
@@ -75,41 +75,77 @@ const getMaxNroRows = (): number => {
 };
 
 const Skills = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+      console.log('current width', width);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div
-      className={`heightWithHeader px-10 pb-10 flex flex-col items-center text-xl`}
+      className={`w-full px-10 pb-10 flex flex-col items-center text-xl`}
       id="skills"
     >
       <Title title="Skills"></Title>
 
-      <table
-        className={`table-auto border-separate border-spacing-x-[15px] flex-1 ${styles.skillsTable}`}
-      >
-        <thead className="mb-[20px]">
-          <tr>
-            {skills.map((skill, index) => {
-              return (
-                <th key={index} className="h-20">
-                  <p className="">{skill.area}</p>
-                </th>
-              );
-            })}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            {skills.map((skill, index) => {
-              return (
-                <td key={index} className={`${styles.techList} text-primary`}>
-                  {skill.technologies.map((tech, index2) => (
-                    <p key={index2}>{tech}</p>
-                  ))}
-                </td>
-              );
-            })}
-          </tr>
-        </tbody>
-      </table>
+      {width > 770 ? (
+        <table
+          className={`table-auto border-separate border-spacing-x-[15px] flex-1 ${styles.skillsTable}`}
+        >
+          <thead className="mb-[20px]">
+            <tr>
+              {skills.map((skill, index) => {
+                return (
+                  <th key={index} className="h-20">
+                    <p className="">{skill.area}</p>
+                  </th>
+                );
+              })}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {skills.map((skill, index) => {
+                return (
+                  <td key={index} className={`${styles.techList} text-primary`}>
+                    {skill.technologies.map((tech, index2) => (
+                      <p key={index2}>{tech}</p>
+                    ))}
+                  </td>
+                );
+              })}
+            </tr>
+          </tbody>
+        </table>
+      ) : (
+        <div className="flex flex-col w-full gap-[13px]">
+          {skills.map((skill, index) => {
+            return (
+              <div className="flex flex-col gap-[13px]" key={skill.area}>
+                <div>{skill.area}</div>
+                <div className="flex flex-row flex-wrap bg-third text-primary  align-center gap-x-[20px] gap-y-[5px] p-[15px] items-center whitespace-nowrap ">
+                  {skill.technologies.map((technology) => {
+                    return (
+                      <div key={`${skill.area}-${technology}`}>
+                        {technology}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

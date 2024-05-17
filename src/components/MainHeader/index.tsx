@@ -20,14 +20,16 @@ const MainHeader = () => {
   const [currentTabIndex, setCurrentTabIndex] = useState<number>(0);
 
   return (
-    <Disclosure as="nav" className="sticky">
+    <Disclosure as="nav">
       {({ open }) => (
         <>
           <div className="max-w-none w-screen">
-            <div className="relative  flex items-center justify-between bg-primary px-7 py-7">
+            <div
+              className={`flex items-center justify-between bg-primary ${styles.header}`}
+            >
               <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="inline-flex items-center self-start justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -37,9 +39,9 @@ const MainHeader = () => {
                 </Disclosure.Button>
               </div>
 
-              <div className="flex  items-center max-w-[40%]">
+              <div className="flex items-center max-w-[40%]">
                 <p className={`font-bold text-third ${styles.name}`}>
-                  JESÚS ANTONIO GUTIERREZ YANCÁN
+                  JESÚS GUTIERREZ YANCÁN
                 </p>
               </div>
               <div className="hidden sm:ml-6 sm:block">

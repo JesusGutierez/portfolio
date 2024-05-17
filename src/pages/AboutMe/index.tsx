@@ -6,10 +6,7 @@ import { calculateAge } from '@/services/utils';
 function AboutMe() {
   // const age: number = calculateAge(new Date('2001-11-23'));
   return (
-    <div
-      className="heightWithHeader flex items-center justify-center"
-      id="about"
-    >
+    <div className="flex" id="about">
       <div className="flex items-center p-10 flex-wrap gap-[30px] justify-center">
         <div className="w-[250px] h-[250px] general-shadow text-center">
           <Image
