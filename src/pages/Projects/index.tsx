@@ -1,12 +1,16 @@
 import Title from '@/components/Title';
 import { Project } from '@/models/Project';
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './index.module.scss';
-import { projects } from '@/services/projects';
+import { getProjects, projects } from '@/services/projects';
 import Image from 'next/image';
 import { AiOutlineGithub } from 'react-icons/ai';
 
 function Projects() {
+  useEffect(() => {
+    getProjects();
+  }, [])
+  
   return (
     <div className="flex flex-col w-full" id="projects">
       <Title title="Projects"></Title>
