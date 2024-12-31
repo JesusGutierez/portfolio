@@ -41,7 +41,7 @@ const Home = () => {
         <Presentation />
       </div>
       <div className="sticky top-0">
-        <MainHeader />0
+        <MainHeader />
       </div>
       <div className={`h-full overflow-x-hidden`}>
         {components.map((Comp, index) => {

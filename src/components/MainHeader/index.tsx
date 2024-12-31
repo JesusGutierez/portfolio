@@ -6,18 +6,12 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import styles from './index.module.scss';
 
 const navigation = [
-  { name: 'Who I am', href: '/#about' },
-  { name: 'Skills', href: '/#skills' },
-  { name: 'Projects', href: '/#projects' },
-  { name: 'Contact', href: '/#contact' },
+  { name: 'Acerca de', href: '/#about' },
+  { name: 'Tecnologías', href: '/#skills' },
+  { name: 'Certificados', href: '/#certificates' },
+  { name: 'Proyectos', href: '/#projects' },
+  { name: 'Contacto', href: '/#contact' },
 ];
-// const navigation = [
-//   { name: 'Acerca de', href: '/#about' },
-//   { name: 'Tecnologías', href: '/#skills' },
-//   { name: 'Certificados', href: '/#certificates' },
-//   { name: 'Proyectos', href: '/#projects' },
-//   { name: 'Contacto', href: '/#contact' },
-// ];
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -32,8 +26,9 @@ const MainHeader = () => {
         <>
           <div className="max-w-none w-screen">
             <div
-              className={`flex items-center justify-between bg-primary ${styles.header}`}
+              className={`flex items-center justify-center`}
             >
+              {/* Phone menu */}
               <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center self-start justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -46,11 +41,7 @@ const MainHeader = () => {
                 </Disclosure.Button>
               </div>
 
-              <div className="flex items-center max-w-[40%]">
-                <p className={`font-bold text-third ${styles.name}`}>
-                  JESÚS GUTIERREZ YANCÁN
-                </p>
-              </div>
+              {/* Desktop menu */}
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
                   {navigation.map((item, index) => {
@@ -68,9 +59,9 @@ const MainHeader = () => {
                         }}
                         className={classNames(
                           isCurrent
-                            ? 'bg-gray-900 text-primary'
-                            : 'hover:bg-secondary hover:text-primary',
-                          'rounded-md px-3 py-2 text-sm font-bold text-center flex items-center'
+                            ? 'text-third'
+                            : 'hover:text-third hover:text-primary',
+                          'rounded-md px-3 py-2 text-sm font-bold text-center flex items-center h-[80px]'
                         )}
                         aria-current={isCurrent ? 'page' : undefined}
                       >
@@ -83,6 +74,7 @@ const MainHeader = () => {
             </div>
           </div>
 
+          {/* Displayed menu on phone*/}
           <Disclosure.Panel className="sm:hidden bg-primary">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item, index: number) => {
@@ -101,8 +93,8 @@ const MainHeader = () => {
                     }}
                     className={classNames(
                       isCurrent
-                        ? 'bg-gray-900 text-primary'
-                        : 'hover:bg-gray-700 hover:text-primary',
+                        ? 'text-third'
+                        : 'hover:text-third hover:text-primary',
                       'block rounded-md px-3 py-2 text-base font-medium'
                     )}
                     aria-current={isCurrent ? 'page' : undefined}
