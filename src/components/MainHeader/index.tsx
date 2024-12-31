@@ -11,6 +11,13 @@ const navigation = [
   { name: 'Projects', href: '/#projects' },
   { name: 'Contact', href: '/#contact' },
 ];
+// const navigation = [
+//   { name: 'Acerca de', href: '/#about' },
+//   { name: 'Tecnologías', href: '/#skills' },
+//   { name: 'Certificados', href: '/#certificates' },
+//   { name: 'Proyectos', href: '/#projects' },
+//   { name: 'Contacto', href: '/#contact' },
+// ];
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');

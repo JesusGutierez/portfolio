@@ -10,6 +10,11 @@ import { useEffect, useState } from 'react';
 
 const Home = () => {
   const [isIntroduction, setIsIntroduction] = useState(true)
+  const [isHiddenPresentation, setIsHiddenPresentation] = useState(false)
+  const timesTransition = {
+    timeToHide: 1500,
+    animationHideTime: 500
+  };
   const components = [
     AboutMe,
     Skills,
@@ -22,31 +27,31 @@ const Home = () => {
   }, [])
 
   const startTimer = () => {
-    const timeToHide = 1500
     setTimeout(() => {
       setIsIntroduction(false)
-    }, timeToHide);
+    }, timesTransition.timeToHide);
+    setTimeout(() => {
+      setIsHiddenPresentation(true)
+    }, timesTransition.timeToHide + timesTransition.animationHideTime);
   }
 
   return (
     <div className="h-screen flex flex-col overflow-auto">
-      <div className={`h-screen w-screen duration-500 absolute z-10 ${isIntroduction ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`h-screen w-screen duration-500 absolute z-10 ${isIntroduction ? 'opacity-100' : 'opacity-0'} ${isHiddenPresentation ? 'hidden' : null}`}>
         <Presentation />
       </div>
-      <>
-        <div className="sticky top-0">
-          <MainHeader />0
-        </div>
-        <div className={`h-full overflow-x-hidden`}>
-          {components.map((Comp, index) => {
-            return (
-              <div key={index} className="min-h-full flex justify-center w-full">
-                <Comp />
-              </div>
-            )
-          })}
-        </div>
-      </>
+      <div className="sticky top-0">
+        <MainHeader />0
+      </div>
+      <div className={`h-full overflow-x-hidden`}>
+        {components.map((Comp, index) => {
+          return (
+            <div key={index} className="min-h-full flex justify-center w-full">
+              <Comp />
+            </div>
+          )
+        })}
+      </div>
     </div>
   );
 };
