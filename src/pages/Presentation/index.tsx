@@ -3,10 +3,10 @@ import styles from './index.module.scss'
 function Presentaton() {
   return (
     <div
-      className={`flex text-[70px] justify-center items-center h-full w-full bg-primary`}
+      className={`grid text-[70px] text-center justify-center items-center h-full w-full bg-primary`}
       id="Presentation"
     >
-      <div>Hola :)</div>
+      <div className={`${styles['typed-out']}`}>Saludos ✌</div>
     </div>
   )
 }
