@@ -2,12 +2,16 @@ import React from 'react';
 import Image from 'next/image';
 import profileImg from '/src/assets/profile.jpg';
 import { calculateAge } from '@/services/utils';
+import VerticalParagraph from '@/components/VerticalParagraph';
 
 function AboutMe() {
   // const age: number = calculateAge(new Date('2001-11-23'));
   return (
-    <div className="flex" id="about">
-      <div className="flex items-center p-10 flex-wrap gap-[30px] justify-center">
+    <div className="flex flex-col justify-center items-center gap-[40px]" id="about">
+
+      <div className='text-3xl text-center'>Soy <span className='text-third'>Jesús Gutierrez</span>, desarrollador Frontend</div>
+
+      <div className="flex items-start flex-wrap gap-[30px] justify-center">
         <div className="w-[250px] h-[250px] general-shadow text-center">
           <Image
             src={profileImg}
@@ -15,19 +19,23 @@ function AboutMe() {
           ></Image>
         </div>
 
-        <div className="flex-1 min-w-[260px] max-w-[550px]">
-          <p className="text-2xl">
-            I&apos;m <span className="text-third">Jesús Gutierrez Yancán</span>,
-            I&apos;m {calculateAge()} years old and I&apos;m a{' '}
-            <span className="text-third">Frontend developer</span> from Lima,
-            Peru. I have been working on mobile development since November 2021.
-            <br />
-            <br />I have usually worked with{' '}
-            <span className="text-third">Javascript frameworks</span> being{' '}
-            <span className="text-third">Ionic</span> the main framework for
-            developing mobile applications.
-          </p>
-        </div>
+        <VerticalParagraph title='Perfil Profesional'>
+          <div>
+            Soy Desarrollador Frontend Especializado en Angular e Ionic, me enfoco en desarrollo y mantenimiento de aplicaciones móviles híbridas. Siempre estoy en constante uso de servicios en la nube como Azure, GCP y AWS.
+          </div>
+        </VerticalParagraph>
+
+        <VerticalParagraph title='Datos personales'>
+          <ul>
+            <li>Correo: gtrrzyancan@outlook.com</li>
+            <li>Teléfono: +51 923698014</li>
+            <li>Ubicación: Lima, Perú</li>
+            <li>Linkedin: <span className='text-third'>gutierrezyancan</span></li>
+            <li>Github: <span className='text-third'>gutierrezyancan</span></li>
+          </ul>
+        </VerticalParagraph>
+
+
       </div>
     </div>
   );

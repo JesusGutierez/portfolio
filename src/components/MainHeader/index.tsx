@@ -61,7 +61,7 @@ const MainHeader = () => {
                           isCurrent
                             ? 'text-third'
                             : 'hover:text-third hover:text-primary',
-                          'rounded-md px-3 py-2 text-sm font-bold text-center flex items-center h-[80px]'
+                          'rounded-md px-3 py-2 text-base font-bold text-center flex items-center h-[80px]'
                         )}
                         aria-current={isCurrent ? 'page' : undefined}
                       >
