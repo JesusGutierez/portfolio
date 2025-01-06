@@ -17,7 +17,16 @@ const getProjects = () => {
         'Next js',
       ],
       imageUrl: portfolioImg,
-      repositoryUrl: 'https://github.com/JesusGutierez/portfolio',
+      links: [
+        {
+          type: 'github',
+          link: 'https://github.com/JesusGutierez/portfolio'
+        },
+        {
+          type: 'web',
+          link: 'https://portfolio-jesusgutierez.vercel.app/'
+        }
+      ]
     },
   ];
 };

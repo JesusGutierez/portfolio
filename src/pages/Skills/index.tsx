@@ -61,7 +61,7 @@ const Skills = () => {
       id="skills"
     >
       <div className='text-[32px] text-center'>
-        <span className='text-third'>Tecnologías</span> principales
+        <span className='text-third'>Tecnologías</span>
       </div>
       <div className='flex flex-wrap justify-center items-start gap-[80px]'>
         {skills.map(textArea => {
