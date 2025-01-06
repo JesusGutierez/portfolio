@@ -43,10 +43,10 @@ const Home = () => {
       <div className="sticky top-0">
         <MainHeader />
       </div>
-      <div className={`h-full overflow-x-hidden p-[20px]`}>
+      <div className={`flex flex-col items-center px-[40px] py-[60px] gap-[100px]`}>
         {components.map((Comp, index) => {
           return (
-            <div key={index} className="min-h-full flex justify-center w-full">
+            <div key={index} className="w-full">
               <Comp />
             </div>
           )

@@ -23,7 +23,7 @@ const MainHeader = () => {
   return (
     <Disclosure as="nav">
       {({ open }) => (
-        <>
+        <div className='bg-primary'>
           <div className="max-w-none w-screen">
             <div
               className={`flex items-center justify-center`}
@@ -105,7 +105,7 @@ const MainHeader = () => {
               })}
             </div>
           </Disclosure.Panel>
-        </>
+        </div>
       )}
     </Disclosure>
   );
