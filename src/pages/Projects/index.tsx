@@ -8,7 +8,7 @@ function Projects() {
   }, [])
 
   return (
-    <div className="flex flex-col w-full gap-[50px] items-center flex-wrap" id="projects">
+    <div className="flex flex-col w-full gap-[50px] items-center flex-wrap z-0" id="projects">
       <div className='text-[32px] text-center'>
         <span className='text-third'>Proyectos</span> principales
       </div>

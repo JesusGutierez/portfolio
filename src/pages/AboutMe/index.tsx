@@ -12,12 +12,6 @@ function AboutMe() {
       <div className='text-3xl text-center'>Soy <span className='text-third'>Jesús Gutierrez</span>, desarrollador Frontend</div>
 
       <div className="flex items-start flex-wrap gap-[30px] justify-center">
-        <div className="w-[250px] h-[250px] general-shadow text-center">
-          <Image
-            src={profileImg}
-            alt="jesús antonio gutierrez yancán photo"
-          ></Image>
-        </div>
 
         <VerticalParagraph title='Perfil Profesional'>
           <div className='text-center'>
