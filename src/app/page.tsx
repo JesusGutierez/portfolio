@@ -2,6 +2,7 @@
 
 import MainHeader from '@/components/MainHeader';
 import AboutMe from '@/pages/AboutMe';
+import Certificates from '@/pages/Certificates';
 import Contact from '@/pages/Contact';
 import Presentation from '@/pages/Presentation';
 import Projects from '@/pages/Projects';
@@ -18,6 +19,7 @@ const Home = () => {
   const components = [
     AboutMe,
     Skills,
+    Certificates,
     Projects,
     Contact
   ]
@@ -40,7 +42,7 @@ const Home = () => {
       <div className={`h-screen w-screen duration-500 fixed z-10 ${isIntroduction ? 'opacity-100' : 'opacity-0'} ${isHiddenPresentation ? 'hidden' : null}`}>
         <Presentation />
       </div>
-      <div className="fixed top-0">
+      <div className="fixed z-[1000]">
         <MainHeader />
       </div>
       <div className={`flex flex-col items-center px-[40px] py-[60px] gap-[100px] sm:pt-[80px]`}>

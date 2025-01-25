@@ -9,7 +9,7 @@ function AboutMe() {
   return (
     <div className="flex flex-col justify-center items-center gap-[50px]" id="about">
 
-      <div className='text-3xl text-center'>Soy <span className='text-third'>Jesús Gutierrez</span>, desarrollador Frontend</div>
+      <div className='section-title'>Soy <span>Jesús Gutierrez</span>, desarrollador Frontend</div>
 
       <div className="flex items-start flex-wrap gap-[30px] justify-center">
 

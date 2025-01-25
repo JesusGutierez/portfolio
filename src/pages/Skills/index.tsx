@@ -5,7 +5,7 @@ import styles from './index.module.scss';
 import SkillModel from '../../models/skillModel';
 import VerticalParagraph from '@/components/VerticalParagraph';
 
-let skills: Array<SkillModel> = [
+const skills: Array<SkillModel> = [
   new SkillModel('Front end', [
     'HTML',
     'CSS - SASS',
@@ -60,8 +60,8 @@ const Skills = () => {
       className={`w-full flex flex-col items-center gap-[50px] justify-center`}
       id="skills"
     >
-      <div className='text-[32px] text-center'>
-        <span className='text-third'>Tecnologías</span>
+      <div className='section-title'>
+        <span>Tecnologías</span>
       </div>
       <div className='flex flex-wrap justify-center items-start gap-[80px]'>
         {skills.map(textArea => {

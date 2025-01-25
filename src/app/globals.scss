@@ -43,3 +43,11 @@ body {
   color: red;
   margin-top: 2px;
 }
+
+.section-title{
+  font-size: 30px;
+  text-align: center;
+  >span {
+    color: var(--thirdColor);
+  }
+}

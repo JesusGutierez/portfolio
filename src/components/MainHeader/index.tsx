@@ -107,7 +107,7 @@ const MainHeader = () => {
           </Disclosure.Panel>
         </div>
       )}
-    </Disclosure>
+    </Disclosure >
   );
 };
 

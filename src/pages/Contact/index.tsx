@@ -1,4 +1,3 @@
-import Title from '@/components/Title';
 import React from 'react';
 import styles from './index.module.scss';
 import { AiOutlineGithub, AiFillLinkedin, AiOutlineMail } from 'react-icons/ai';
@@ -67,7 +66,7 @@ function Contact() {
 
   return (
     <div className="flex flex-col w-full" id="contact">
-      <Title title="Contact me" />
+      <div className='section-title'><span>Contact me</span></div>
       <div
         id={styles.infoContainer}
         className="flex-auto flex flex-col mx-10 mb-20 gap-10"
@@ -115,9 +114,8 @@ function Contact() {
             })}
             <div className="flex justify-end">
               <button
-                className={`${
-                  formik.isValid ? 'opacity-100' : 'opacity-50'
-                } bg-third  hover:bg-third hover:opacity-75 text-primary hover:bg-blue-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline`}
+                className={`${formik.isValid ? 'opacity-100' : 'opacity-50'
+                  } bg-third  hover:bg-third hover:opacity-75 text-primary hover:bg-blue-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline`}
                 type="submit"
                 disabled={formik.isValidating}
               >
