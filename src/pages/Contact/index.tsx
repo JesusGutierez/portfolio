@@ -65,7 +65,7 @@ function Contact() {
   });
 
   return (
-    <div className="flex flex-col w-full" id="contact">
+    <div className="flex flex-col w-full gap-[50px]" id="contact">
       <div className='section-title'><span>Contact me</span></div>
       <div
         id={styles.infoContainer}

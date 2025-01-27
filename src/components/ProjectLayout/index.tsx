@@ -2,6 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Image from 'next/image'
 import { Project } from '@/models/Project';
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { TbWorldWww } from "react-icons/tb";
+import { IconType } from 'react-icons/lib';
 
 function ProyectLayout(
   props: {
@@ -10,23 +13,36 @@ function ProyectLayout(
 ) {
   const linkTypes: {
     [key: string]: {
-      primaryColor: string,
-      secondaryColor: string
+      icon: IconType,
+      style: React.CSSProperties
     }
   } = {
     'linkedin': {
-      primaryColor: '#0E76A8',
-      secondaryColor: '#FFFFFF'
+      icon: FaLinkedin,
+      style: {
+        backgroundColor: '#0E76A8',
+        color: '#FFFFFF'
+      }
     },
     'github': {
-      primaryColor: '#0D1117',
-      secondaryColor: '#FFFFFF'
+      icon: FaGithub,
+      style: {
+        backgroundColor: '#242B36',
+        color: '#FFFFFF'
+      }
     },
     'web': {
-      primaryColor: '#97FEED',
-      secondaryColor: '#000513'
+      icon: TbWorldWww,
+      style: {
+        backgroundColor: '#97FEED',
+        color: '#000513'
+      }
     },
   };
+
+  const openInNewTab = (url: string) => {
+    window.open(url, '_blank')?.focus();
+  }
 
   if (props.project) {
     return (
@@ -52,8 +68,18 @@ function ProyectLayout(
           <div id='second-info-part' className='flex flex-wrap items-start justify-start gap-[10px]'>
             {props.project.links?.map(link => {
               const linkType = linkTypes[link.type];
+              const linkStyle: React.CSSProperties = linkType.style;
+              const Icon = linkType.icon;
               return (
-                <div className={`px-[20px] py-[5px] font-medium rounded-full bg-[${linkType.primaryColor}] text-[${linkType.secondaryColor}]`} key={link.type}>{link.type}</div>
+                <div
+                  style={linkStyle}
+                  className={`px-[20px] py-[5px] font-medium rounded-full flex justify-between items-center gap-[5px] cursor-pointer border-2 border-white/25 active:border-white/70`}
+                  key={link.type}
+                  onClick={() => openInNewTab(link.link)}
+                >
+                  <div className='capitalize'>{link.type}</div>
+                  <Icon></Icon>
+                </div>
               )
             })}
           </div>

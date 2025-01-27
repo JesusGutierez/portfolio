@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Certificate from '@/models/Certificate'
-import Image from 'next/image'
 import { IoIosLink } from "react-icons/io";
 import styles from './index.module.scss'
 const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];

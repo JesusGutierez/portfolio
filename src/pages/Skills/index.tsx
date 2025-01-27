@@ -1,7 +1,5 @@
 import React, { Component, ReactElement, useEffect, useState } from 'react';
 import '../../models/skillModel';
-import Title from '@/components/Title';
-import styles from './index.module.scss';
 import SkillModel from '../../models/skillModel';
 import VerticalParagraph from '@/components/VerticalParagraph';
 
