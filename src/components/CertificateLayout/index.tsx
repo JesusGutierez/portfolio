@@ -22,7 +22,7 @@ function CertificateLayout(props: {
       </div>
 
       <div>
-        <CustomButton text='Check it' type='link'></CustomButton>
+        <CustomButton text='Check it' showIcon={true}></CustomButton>
       </div>
     </div>
 

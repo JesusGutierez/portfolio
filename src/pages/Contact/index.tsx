@@ -3,10 +3,10 @@ import styles from './index.module.scss';
 import { AiOutlineGithub, AiFillLinkedin, AiOutlineMail } from 'react-icons/ai';
 import { SocialNetwork } from '@/models/SocialNetwork';
 import { Field } from '@/models/FIeld';
-import ContactForm from '@/components/ContactForm';
+import FormBuilder from '@/components/ContactForm';
 
 const fields: Field[] = [
-  new Field('name', null, 'nombre completo', 'text', false),
+  new Field('name', null, 'nombre completo', 'text', true),
   new Field('email', null, 'correo', 'email', true),
   new Field('message', 6, 'mensaje', 'text', true),
 ];
@@ -31,6 +31,10 @@ const networks: SocialNetwork[] = [
   ),
 ];
 
+const handleInformation = (values: { [key: string]: string }) => {
+  alert(JSON.stringify(values, null, 2))
+}
+
 function Contact() {
   return (
     <div className="flex flex-col w-full gap-[50px]" id="contact">
@@ -41,9 +45,7 @@ function Contact() {
       >
         <div className="w-full max-w-screen-md">
           <p className="mb-5 text-xl">Dejame un mensaje</p>
-
-          <ContactForm fields={fields}></ContactForm>
-
+          <FormBuilder fields={fields} submit={handleInformation}></FormBuilder>
         </div>
 
         <div id={styles.networksContainer}>

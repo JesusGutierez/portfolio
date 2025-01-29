@@ -5,32 +5,27 @@ import { Field, Form, Formik, FormikHelpers } from 'formik';
 import styles from './index.module.scss'
 import CustomButton from '../CustomButton';
 import * as Yup from 'yup'
-function ContactForm(props: { fields: FieldModel[] }) {
-  const getInitialValues = () => {
-    let initialObject: { [key: string]: string } = {};
-    props.fields.forEach(field => {
-      initialObject[field.name.toString()] = '';
-    })
-    return initialObject
-  }
-
-  const getYuoSchema = () => {
-    let yupShape: Yup.ObjectShape = {};
-    props.fields.forEach((field) => {
-      if (field.isRequired === true) yupShape[field.name] = Yup.string().required('Dato requerido!');
-    })
-    return Yup.object().shape(yupShape)
-  }
+function FormBuilder(props: { fields: FieldModel[], submit: Function }) {
+  const { initialValues, validationSchema } = props.fields.reduce(
+    (acc, field) => {
+      acc.initialValues[field.name] = '';
+      if (field.isRequired) {
+        acc.validationSchema[field.name] = Yup.string().required('Dato requerido!');
+      }
+      return acc;
+    },
+    { initialValues: {} as { [key: string]: string }, validationSchema: {} as Yup.ObjectShape }
+  );
 
   return (
     <Formik
-      initialValues={getInitialValues()}
-      validationSchema={getYuoSchema()}
+      initialValues={initialValues}
+      validationSchema={Yup.object().shape(validationSchema)}
       onSubmit={(
         values: { [key: string]: string },
         { setSubmitting }: FormikHelpers<{ [key: string]: string }>
       ) => {
-        alert(JSON.stringify(values, null, 2))
+        props.submit(values);
         setSubmitting(false)
       }}
     >
@@ -41,15 +36,15 @@ function ContactForm(props: { fields: FieldModel[] }) {
               return (
                 <div key={field.name}>
                   <Field className={styles.field} id={field.name} name={field.name} placeholder={field.placeholder} type={field.type}></Field>
-                  {errors[field.name] && touched[field.name] ? (
+                  {errors[field.name] && touched[field.name] && (
                     <div className='text-red-500'>{errors[field.name]}</div>
-                  ) : null}
+                  )}
                 </div>
               )
             })}
 
             <div>
-              <CustomButton text='Enviar'></CustomButton>
+              <CustomButton type='submit' text='Enviar'></CustomButton>
             </div>
           </div>
         </Form>
@@ -58,8 +53,13 @@ function ContactForm(props: { fields: FieldModel[] }) {
   )
 }
 
-ContactForm.propTypes = {
-  fields: PropTypes.arrayOf(PropTypes.instanceOf(FieldModel))
+FormBuilder.defaultProps = {
+  submit: () => { }
 }
 
-export default ContactForm
+FormBuilder.propTypes = {
+  fields: PropTypes.arrayOf(PropTypes.instanceOf(FieldModel)),
+  submit: PropTypes.func.isRequired
+}
+
+export default FormBuilder
