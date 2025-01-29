@@ -6,9 +6,9 @@ import { Field } from '@/models/FIeld';
 import ContactForm from '@/components/ContactForm';
 
 const fields: Field[] = [
-  new Field('name', null, 'nombre completo', 'text'),
-  new Field('email', null, 'correo', 'email'),
-  new Field('message', 6, 'mensaje', 'text'),
+  new Field('name', null, 'nombre completo', 'text', false),
+  new Field('email', null, 'correo', 'email', true),
+  new Field('message', 6, 'mensaje', 'text', true),
 ];
 const networks: SocialNetwork[] = [
   new SocialNetwork(
