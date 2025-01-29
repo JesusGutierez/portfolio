@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Certificate from '@/models/Certificate'
 import { IoIosLink } from "react-icons/io";
 import styles from './index.module.scss'
+import CustomButton from '../CustomButton';
 const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
 function CertificateLayout(props: {
@@ -21,12 +22,7 @@ function CertificateLayout(props: {
       </div>
 
       <div>
-        <button type='button' className='
-        flex justify-between items-center gap-[10px] border-[2px] border-third text-third rounded-xl p-[12px] cursor-pointer text-nowrap
-        transition duration-200 active:bg-white/25'>
-          <div className={styles['text-nowrap']}>Check it</div>
-          <IoIosLink></IoIosLink>
-        </button>
+        <CustomButton text='Check it' type='link'></CustomButton>
       </div>
     </div>
 

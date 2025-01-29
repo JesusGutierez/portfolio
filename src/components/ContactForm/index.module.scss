@@ -1,0 +1,15 @@
+.field{
+  background-color: transparent;
+  border-bottom: 1px solid var(--lines);
+  height: 40px;
+  width: 100%;
+  &::placeholder {
+    opacity: 1; /* Firefox */
+    text-transform: capitalize;
+    color: var(--secondaryColor);
+  }
+  &::-ms-input-placeholder {
+    text-transform: capitalize;
+    color: var(--secondaryColor);
+  }
+}
