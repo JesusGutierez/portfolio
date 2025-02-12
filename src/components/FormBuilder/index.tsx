@@ -5,6 +5,7 @@ import { Field, Form, Formik, FormikHelpers } from 'formik';
 import styles from './index.module.scss'
 import CustomButton from '../CustomButton';
 import * as Yup from 'yup'
+
 function FormBuilder(props: { fields: FieldModel[], submit: Function }) {
   const { initialValues, validationSchema } = props.fields.reduce(
     (acc, field) => {
@@ -20,6 +21,7 @@ function FormBuilder(props: { fields: FieldModel[], submit: Function }) {
   return (
     <Formik
       initialValues={initialValues}
+      enableReinitialize={true}
       validationSchema={Yup.object().shape(validationSchema)}
       onSubmit={(
         values: { [key: string]: string },
@@ -35,7 +37,14 @@ function FormBuilder(props: { fields: FieldModel[], submit: Function }) {
             {props.fields.map((field) => {
               return (
                 <div key={field.name}>
-                  <Field className={styles.field} id={field.name} name={field.name} placeholder={field.placeholder} type={field.type}></Field>
+                  <Field
+                    className={`${styles.field}`}
+                    id={field.name}
+                    name={field.name}
+                    placeholder={field.placeholder}
+                    component={field.type}
+                    rows={field.nroLines}
+                  ></Field>
                   {errors[field.name] && touched[field.name] && (
                     <div className='text-red-500'>{errors[field.name]}</div>
                   )}

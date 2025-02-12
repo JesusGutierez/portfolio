@@ -3,12 +3,13 @@ import styles from './index.module.scss';
 import { AiOutlineGithub, AiFillLinkedin, AiOutlineMail } from 'react-icons/ai';
 import { SocialNetwork } from '@/models/SocialNetwork';
 import { Field } from '@/models/FIeld';
-import FormBuilder from '@/components/ContactForm';
+import FormBuilder from '@/components/FormBuilder';
+import { sendTransactionalEmail } from '@/services/brevo';
 
 const fields: Field[] = [
-  new Field('name', null, 'nombre completo', 'text', true),
-  new Field('email', null, 'correo', 'email', true),
-  new Field('message', 6, 'mensaje', 'text', true),
+  new Field('name', null, 'nombre completo', 'input', true),
+  new Field('email', null, 'correo', 'input', true),
+  new Field('message', 10, 'mensaje', 'textarea', true),
 ];
 const networks: SocialNetwork[] = [
   new SocialNetwork(
@@ -32,7 +33,7 @@ const networks: SocialNetwork[] = [
 ];
 
 const handleInformation = (values: { [key: string]: string }) => {
-  alert(JSON.stringify(values, null, 2))
+  sendTransactionalEmail(`Portfolio - Message from ${values.name} (${values.email})`, values.message, ['portfolio', 'message'])
 }
 
 function Contact() {
