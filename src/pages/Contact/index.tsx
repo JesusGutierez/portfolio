@@ -5,6 +5,7 @@ import { SocialNetwork } from '@/models/SocialNetwork';
 import { Field } from '@/models/FIeld';
 import FormBuilder from '@/components/FormBuilder';
 import { sendTransactionalEmail } from '@/services/brevo';
+import { useSnackbar } from '@/Contexts/SnackbarContext';
 
 const fields: Field[] = [
   new Field('name', null, 'nombre completo', 'input', true),
@@ -32,11 +33,18 @@ const networks: SocialNetwork[] = [
   ),
 ];
 
-const handleInformation = (values: { [key: string]: string }) => {
-  sendTransactionalEmail(`Portfolio - Message from ${values.name} (${values.email})`, values.message, ['portfolio', 'message'])
-}
+
 
 function Contact() {
+  const { showSnackbar } = useSnackbar();
+
+  const handleInformation = (values: { [key: string]: string }) => {
+    sendTransactionalEmail(`Portfolio - Message from ${values.name} (${values.email})`, values.message, ['portfolio', 'message'])
+      .then((_response: Response) => {
+        showSnackbar("Fue enviado correctamente!", "success")
+      })
+  }
+
   return (
     <div className="flex flex-col w-full gap-[50px]" id="contact">
       <div className='section-title'><span>Contactame</span></div>

@@ -16,7 +16,7 @@ const getHeaders = (): Headers => {
   return myHeaders;
 }
 
-export const sendTransactionalEmail = (subject: string, message: string, tags: string[]) => {
+export const sendTransactionalEmail = (subject: string, message: string, tags: string[]): Promise<Response> => {
   const headers = getHeaders();
   const newRaw = {
     ...raw,
